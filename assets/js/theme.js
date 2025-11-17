@@ -14,12 +14,12 @@
 
 // Toggle between light and dark theme settings.
 let toggleThemeSetting = () => {
-  let themeSetting = determineThemeSetting();
-  if (themeSetting == "light") {
-    setThemeSetting("dark");
-  } else {
-    setThemeSetting("light");
-  }
+  let themeSetting = determineThemeSetting();
+  if (themeSetting == "light") {
+    setThemeSetting("dark");
+  } else {
+    setThemeSetting("light");
+  }
 };
 
 // Change the theme setting and apply the theme.
@@ -274,12 +274,12 @@ let transTheme = () => {
 // Determine the expected state of the theme toggle, which can be "dark" or "light".
 // Default is "dark".
 let determineThemeSetting = () => {
-  let themeSetting = localStorage.getItem("theme");
+  let themeSetting = localStorage.getItem("theme");
   // If the stored theme is not "dark" or "light", default to "dark".
-  if (themeSetting != "dark" && themeSetting != "light") {
-    themeSetting = "dark";  // default theme
-  }
-  return themeSetting;
+  if (themeSetting != "dark" && themeSetting != "light") {
+    themeSetting = "dark"; // default theme
+  }
+  return themeSetting;
 };
 
 // // Determine the computed theme, which can be "dark" or "light". If the theme setting is
@@ -302,8 +302,8 @@ let determineThemeSetting = () => {
 let determineComputedTheme = () => {
   // Since "system" is no longer an option, the computed theme
   // is always the same as the theme setting.
-  let themeSetting = determineThemeSetting();
-  return themeSetting;
+  let themeSetting = determineThemeSetting();
+  return themeSetting;
 };
 
 let initTheme = () => {
