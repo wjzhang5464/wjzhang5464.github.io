@@ -27,10 +27,14 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-I am a third-year Ph.D. student at [Purdue University](https://www.purdue.edu/), advised by [Prof. Stanley Chan](https://engineering.purdue.edu/ChanGroup/stanleychan.html).
+I am a third-year Ph.D. student at [Purdue University](https://www.purdue.edu/), advised by [Prof. Stanley H. Chan](https://engineering.purdue.edu/ChanGroup/stanleychan.html).
 
 **Research.** My work lies at the intersection of computational imaging and signal processing. I focus on probabilistic modeling, compression, and reconstruction for **single-photon LiDAR** systems. Currently, I am developing forward models and inverse algorithms that account for **hardware dead time** and other high-flux nonlinear effects.
 
 **Previously.** I received my M.S. in Electrical and Computer Engineering from the [University of California, Los Angeles (UCLA)](https://www.ee.ucla.edu/) and my B.Eng. in Optoelectronic Information Science and Engineering from the [University of Electronic Science and Technology of China (UESTC)](https://sose.uestc.edu.cn/en/). At UESTC, I worked with [Prof. Zhao Wang](https://scholar.google.com/citations?user=vr4K5noAAAAJ&hl=en) on optical coherence tomography (OCT) system development.
 
 **Outside research.** I enjoy playing basketball 🏀, weight lifting 🏋️‍♂️, and—more recently—running 🏃‍♂️!
+
+<span style="color:red; font-weight:bold;">
+I am currently seeking a Summer 2026 internship in Lidar, Radar, exotic sensors, depth estimation, or related areas in computational imaging!
+</span>
