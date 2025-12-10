@@ -1,12 +1,16 @@
 metadata:
-  last_updated: '2025-11-21'
+  last_updated: '2025-12-10'
 papers:
   KjVw0dsAAAAJ:9yKSN-GCB0IC:
     citations: 12
     title: Simple alcohol solvent treatment enables efficient non-fullerene organic solar cells
     year: '2019'
+  KjVw0dsAAAAJ:Tyk-4Ss8FVUC:
+    citations: 0
+    title: Markov-Renewal Single-Photon LiDAR Simulator
+    year: '2025'
   KjVw0dsAAAAJ:UeHWp8X0CEIC:
-    citations: 1
+    citations: 2
     title: Ultrafast High-Flux Single-Photon LiDAR Simulator via Neural Mapping
     year: '2025'
   KjVw0dsAAAAJ:d1gkVwhDpl0C:
@@ -15,15 +19,15 @@ papers:
     year: '2024'
   KjVw0dsAAAAJ:qjMakFHDy7sC:
     citations: 3
-    title: Joint Depth and Reflectivity Estimation using Single-Photon LiDAR
+    title: Joint depth and reflectivity estimation using single-photon lidar
     year: '2025'
   KjVw0dsAAAAJ:u-x6o8ySG0sC:
-    citations: 4
+    citations: 5
     title: Parametric Modeling and Estimation of Photon Registrations for 3D Imaging
     year: '2024'
   KjVw0dsAAAAJ:u5HHmVD_uO8C:
-    citations: 10
-    title: Resolution Limit of Single-Photon LiDAR
+    citations: 11
+    title: Resolution limit of single-photon lidar
     year: '2024'
   KjVw0dsAAAAJ:zYLM7Y9cAGgC:
     citations: 0
