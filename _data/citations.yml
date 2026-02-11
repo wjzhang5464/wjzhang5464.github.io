@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-01-23'
+  last_updated: '2026-02-11'
 papers:
   KjVw0dsAAAAJ:9yKSN-GCB0IC:
     citations: 12
@@ -22,7 +22,7 @@ papers:
     title: Joint depth and reflectivity estimation using single-photon lidar
     year: '2025'
   KjVw0dsAAAAJ:u-x6o8ySG0sC:
-    citations: 5
+    citations: 6
     title: Parametric Modeling and Estimation of Photon Registrations for 3D Imaging
     year: '2024'
   KjVw0dsAAAAJ:u5HHmVD_uO8C:
