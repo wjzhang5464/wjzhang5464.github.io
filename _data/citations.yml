@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-02-11'
+  last_updated: '2026-02-16'
 papers:
   KjVw0dsAAAAJ:9yKSN-GCB0IC:
     citations: 12
@@ -11,7 +11,7 @@ papers:
     year: '2025'
   KjVw0dsAAAAJ:UeHWp8X0CEIC:
     citations: 2
-    title: Ultrafast High-Flux Single-Photon LiDAR Simulator via Neural Mapping
+    title: Ultrafast High-Flux Single-Photon Lidar Simulator via Neural Mapping
     year: '2025'
   KjVw0dsAAAAJ:d1gkVwhDpl0C:
     citations: 1
@@ -23,7 +23,7 @@ papers:
     year: '2025'
   KjVw0dsAAAAJ:u-x6o8ySG0sC:
     citations: 6
-    title: Parametric Modeling and Estimation of Photon Registrations for 3D Imaging
+    title: Parametric modeling and estimation of photon registrations for 3d imaging
     year: '2024'
   KjVw0dsAAAAJ:u5HHmVD_uO8C:
     citations: 12
