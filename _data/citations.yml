@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-04-17'
+  last_updated: '2026-04-29'
 papers:
   KjVw0dsAAAAJ:9yKSN-GCB0IC:
     citations: 12
@@ -10,26 +10,26 @@ papers:
     title: Markov-Renewal Single-Photon LiDAR Simulator
     year: '2025'
   KjVw0dsAAAAJ:UeHWp8X0CEIC:
-    citations: 2
+    citations: 3
     title: Ultrafast High-Flux Single-Photon Lidar Simulator via Neural Mapping
     year: '2025'
+  KjVw0dsAAAAJ:Y0pCki6q_DkC:
+    citations: 0
+    title: "Real-Time Markov Modeling for Single-Photon LiDAR: 1000\xD7 Acceleration and Convergence Analysis"
+    year: '2026'
   KjVw0dsAAAAJ:d1gkVwhDpl0C:
     citations: 1
     title: Analysis and Improvement of Rank-Ordered Mean Algorithm in Single-Photon LiDAR
     year: '2024'
   KjVw0dsAAAAJ:qjMakFHDy7sC:
-    citations: 3
+    citations: 4
     title: Joint depth and reflectivity estimation using single-photon lidar
     year: '2025'
   KjVw0dsAAAAJ:u-x6o8ySG0sC:
-    citations: 7
+    citations: 8
     title: Parametric modeling and estimation of photon registrations for 3d imaging
     year: '2024'
   KjVw0dsAAAAJ:u5HHmVD_uO8C:
-    citations: 13
+    citations: 14
     title: Resolution limit of single-photon lidar
     year: '2024'
-  KjVw0dsAAAAJ:zYLM7Y9cAGgC:
-    citations: 0
-    title: 'Real-Time Markov Modeling for Single-Photon LiDAR:  Acceleration and Convergence Analysis'
-    year: '2025'
