@@ -35,6 +35,13 @@ I am a Ph.D. candidate at [Purdue University](https://www.purdue.edu/), advised 
 
 **Outside research.** Basketball 🏀, weight lifting 🏋️, and — more recently — running 🏃. See the [gallery](/gallery/).
 
+<div class="quick-links">
+  <a class="ql ql-primary" href="{{ '/cv/' | relative_url }}">CV</a>
+  <a class="ql" href="https://scholar.google.com/citations?user=KjVw0dsAAAAJ">Google Scholar</a>
+  <a class="ql" href="https://github.com/wjzhang5464">GitHub</a>
+  <a class="ql" href="mailto:zhan5056@purdue.edu">Email</a>
+</div>
+
 <div class="callout" markdown="1">
 **I am looking for a Summer 2027 internship** in LiDAR, radar, novel sensors, depth estimation, or computational imaging more broadly. My [CV](/cv/) has the details, and the fastest way to reach me is [email](mailto:zhan5056@purdue.edu).
 </div>

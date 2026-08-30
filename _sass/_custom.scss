@@ -6,13 +6,13 @@
 
 /* ---------------------------------------------------------------------------
  * 1. Accent colour
- *    A deep bronze-gold in light mode and a warm gold in dark mode: a nod to
- *    Purdue without the low-contrast problems of the literal brand gold.
+ *    Slate blue: deep in light mode, lifted in dark. Both clear AA for body
+ *    links, and it stays out of the way of warm-toned photos and figures.
  *    Change these two values to re-skin the whole site.
  * ------------------------------------------------------------------------ */
 
-$accent-light: #8c6318; // ~5.6:1 on white
-$accent-dark: #dfb457; // ~9.0:1 on #1c1c1d
+$accent-light: #1f4e79; // 8.7:1 on white
+$accent-dark: #79b8e8; // 8.0:1 on #1c1c1d
 
 :root {
   --global-theme-color: #{$accent-light};
@@ -353,4 +353,95 @@ h2.category {
 footer.fixed-bottom,
 footer.sticky-bottom {
   font-size: 0.82rem;
+}
+
+
+/* ---------------------------------------------------------------------------
+ * 10. Homepage section headers ("News    all news ->")
+ *     Markup comes from the customised _layouts/about.liquid.
+ * ------------------------------------------------------------------------ */
+
+.sec-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid var(--global-divider-color);
+  padding-bottom: 0.4rem;
+  margin: 2.6rem 0 1rem;
+}
+
+.sec-head h2 {
+  font-size: 1.05rem;
+  font-weight: 650;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--global-text-color-light);
+  margin: 0;
+
+  a {
+    color: inherit;
+
+    &:hover {
+      color: var(--global-theme-color);
+    }
+  }
+}
+
+.sec-head .sec-more {
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+/* The about page's own h2s sit inside .sec-head, so drop the generic
+ * post-content h2 border that would otherwise double up. */
+.post-content .sec-head h2 {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-top: 0;
+}
+
+/* ---------------------------------------------------------------------------
+ * 11. Quick links row (CV / Scholar / GitHub / Email)
+ * ------------------------------------------------------------------------ */
+
+.quick-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 1.25rem 0 0.25rem;
+}
+
+.quick-links .ql {
+  display: inline-block;
+  font-family: var(--site-sans);
+  font-size: 0.85rem;
+  font-weight: 500;
+  line-height: 1.2;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 6px;
+  color: var(--global-text-color);
+  text-decoration: none;
+  transition:
+    border-color 0.15s ease,
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.quick-links .ql:hover {
+  border-color: var(--global-theme-color);
+  color: var(--global-theme-color);
+  text-decoration: none;
+}
+
+.quick-links .ql-primary {
+  background-color: var(--global-theme-color);
+  border-color: var(--global-theme-color);
+  color: var(--global-bg-color);
+}
+
+.quick-links .ql-primary:hover {
+  background-color: transparent;
+  color: var(--global-theme-color);
 }

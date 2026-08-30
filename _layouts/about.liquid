@@ -42,25 +42,28 @@ layout: default
 
     <!-- News -->
     {% if page.announcements and page.announcements.enabled %}
-      <h2>
-        <a href="{{ '/news/' | relative_url }}" style="color: inherit">News</a>
-      </h2>
+      <div class="sec-head">
+        <h2><a href="{{ '/news/' | relative_url }}">News</a></h2>
+        <a class="sec-more" href="{{ '/news/' | relative_url }}">all news &rarr;</a>
+      </div>
       {% include news.liquid limit=true %}
     {% endif %}
 
     <!-- Latest posts -->
     {% if page.latest_posts and page.latest_posts.enabled %}
-      <h2>
-        <a href="{{ '/blog/' | relative_url }}" style="color: inherit">Latest Posts</a>
-      </h2>
+      <div class="sec-head">
+        <h2><a href="{{ '/blog/' | relative_url }}">Latest posts</a></h2>
+        <a class="sec-more" href="{{ '/blog/' | relative_url }}">all posts &rarr;</a>
+      </div>
       {% include latest_posts.liquid %}
     {% endif %}
 
     <!-- Selected papers -->
     {% if page.selected_papers %}
-      <h2>
-        <a href="{{ '/publications/' | relative_url }}" style="color: inherit">Selected Publications</a>
-      </h2>
+      <div class="sec-head">
+        <h2><a href="{{ '/publications/' | relative_url }}">Selected publications</a></h2>
+        <a class="sec-more" href="{{ '/publications/' | relative_url }}">all publications &rarr;</a>
+      </div>
       {% include selected_papers.liquid %}
     {% endif %}
 

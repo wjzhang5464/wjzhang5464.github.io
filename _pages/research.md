@@ -1,8 +1,8 @@
 ---
 layout: page
-title: projects
-permalink: /projects/
-description: Research threads in single-photon LiDAR and computational imaging.
+title: research
+permalink: /research/
+description: What I work on, organised by thread rather than by paper.
 nav: true
 nav_order: 3
 display_categories: [research, earlier work]
