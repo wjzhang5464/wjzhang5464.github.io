@@ -1,115 +1,112 @@
 ---
 ---
 
-@string{aps = {American Physical Society,}}
-
-@book{einstein1920relativity,
-  title={Relativity: the Special and General Theory},
-  author={Einstein, Albert},
-  year={1920},
-  publisher={Methuen & Co Ltd},
-  html={relativity.html}
-}
-
-@book{einstein1956investigations,
+@article{zhang2025markovrenewal,
+  abbr={Preprint},
   bibtex_show={true},
-  title={Investigations on the Theory of the Brownian Movement},
-  author={Einstein, Albert},
-  year={1956},
-  publisher={Courier Corporation},
-  preview={brownian-motion.gif}
+  title={Markov-Renewal Single-Photon LiDAR Simulator},
+  author={Zhang, Weijian and Chennuri, Prateek and Weerasooriya, Hashan K. and Ma, Bole and Chan, Stanley H.},
+  journal={arXiv preprint arXiv:2512.04924},
+  year={2025},
+  month={December},
+  abstract={Single-photon LiDAR (SP-LiDAR) simulators face a dilemma: fast but inaccurate Poisson models or accurate but prohibitively slow sequential models. This paper breaks that compromise. We present a simulator that achieves both fidelity and speed by focusing on the critical, yet overlooked, component of simulation: the photon count statistics. Our key contribution is a Markov-renewal process (MRP) formulation that, for the first time, analytically predicts the mean and variance of registered photon counts under dead time. To make this MRP model computationally tractable, we introduce a spectral truncation rule that efficiently computes the complex covariance statistics. By proving the shift-invariance of the process, we extend this per-pixel model to full histogram cube generation via a precomputed lookup table. Our method generates 3D cubes indistinguishable from the sequential gold-standard, yet is orders of magnitude faster.},
+  arxiv={2512.04924},
+  html={https://arxiv.org/abs/2512.04924},
+  pdf={https://arxiv.org/pdf/2512.04924},
+  doi={10.48550/arXiv.2512.04924},
+  selected={true}
 }
 
-@article{einstein1950meaning,
-  abbr={AJP},
+@inproceedings{zhang2026realtime,
+  abbr={ICASSP},
   bibtex_show={true},
-  title={The meaning of relativity},
-  author={Einstein, Albert and Taub, AH},
-  journal={American Journal of Physics},
-  volume={18},
-  number={6},
-  pages={403--404},
-  year={1950},
-  publisher={American Association of Physics Teachers}
+  title={Real-Time Markov Modeling for Single-Photon LiDAR: 1000x Acceleration and Convergence Analysis},
+  author={Zhang, Weijian and Weerasooriya, Hashan K. and Chennuri, Prateek and Chan, Stanley H.},
+  booktitle={IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)},
+  year={2026},
+  abstract={Asynchronous single-photon LiDAR (SP-LiDAR) is an important imaging modality for high-quality 3D applications and navigation, but the modeling of the timestamp distributions in the presence of dead time remains a challenge. We present a Markov-chain formulation that accelerates the computation of the steady-state timestamp distribution by three orders of magnitude, together with a convergence analysis that characterizes how quickly the chain reaches its stationary regime.},
+  arxiv={2509.20500},
+  html={https://arxiv.org/abs/2509.20500},
+  pdf={https://arxiv.org/pdf/2509.20500},
+  selected={true}
 }
 
-@article{PhysRev.47.777,
-  abbr={PhysRev},
-  title={Can Quantum-Mechanical Description of Physical Reality Be Considered Complete?},
-  author={Einstein*†, A. and Podolsky*, B. and Rosen*, N.},
-  abstract={In a complete theory there is an element corresponding to each element of reality. A sufficient condition for the reality of a physical quantity is the possibility of predicting it with certainty, without disturbing the system. In quantum mechanics in the case of two physical quantities described by non-commuting operators, the knowledge of one precludes the knowledge of the other. Then either (1) the description of reality given by the wave function in quantum mechanics is not complete or (2) these two quantities cannot have simultaneous reality. Consideration of the problem of making predictions concerning a system on the basis of measurements made on another system that had previously interacted with it leads to the result that if (1) is false then (2) is also false. One is thus led to conclude that the description of reality as given by a wave function is not complete.},
-  journal={Phys. Rev.},
-  location={New Jersey},
-  volume={47},
-  issue={10},
-  pages={777--780},
-  numpages={0},
-  year={1935},
-  month={May},
-  publisher=aps,
-  doi={10.1103/PhysRev.47.777},
-  url={http://link.aps.org/doi/10.1103/PhysRev.47.777},
-  html={https://journals.aps.org/pr/abstract/10.1103/PhysRev.47.777},
-  pdf={example_pdf.pdf},
-  altmetric={248277},
-  dimensions={true},
-  google_scholar_id={qyhmnyLat1gC},
-  video={https://www.youtube-nocookie.com/embed/aqz-KE-bpKQ},
-  additional_info={. *More Information* can be [found here](https://github.com/alshedivat/al-folio/)},
-  annotation={* Example use of superscripts<br>† Albert Einstein},
-  selected={true},
-  inspirehep_id = {3255}
-}
-
-@article{einstein1905molekularkinetischen,
-  title={{\"U}ber die von der molekularkinetischen Theorie der W{\"a}rme geforderte Bewegung von in ruhenden Fl{\"u}ssigkeiten suspendierten Teilchen},
-  author={Einstein, A.},
-  journal={Annalen der physik},
-  volume={322},
-  number={8},
-  pages={549--560},
-  year={1905},
-  publisher={Wiley Online Library}
-}
-
-@article{einstein1905movement,
-  abbr={Ann. Phys.},
-  title={Un the movement of small particles suspended in statiunary liquids required by the molecular-kinetic theory 0f heat},
-  author={Einstein, A.},
-  journal={Ann. Phys.},
-  volume={17},
-  pages={549--560},
-  year={1905}
-}
-
-@article{einstein1905electrodynamics,
-  title={On the electrodynamics of moving bodies},
-  author={Einstein, A.},
-  year={1905}
-}
-
-@Article{einstein1905photoelectriceffect,
+@inproceedings{zhang2025ultrafast,
+  abbr={ICIP},
   bibtex_show={true},
-  abbr={Ann. Phys.},
-  title="{{\"U}ber einen die Erzeugung und Verwandlung des Lichtes betreffenden heuristischen Gesichtspunkt}",
-  author={Albert Einstein},
-  abstract={This is the abstract text.},
-  journal={Ann. Phys.},
-  volume={322},
-  number={6},
-  pages={132--148},
-  year={1905},
-  doi={10.1002/andp.19053220607},
-  award={Albert Einstein receveid the **Nobel Prize in Physics** 1921 *for his services to Theoretical Physics, and especially for his discovery of the law of the photoelectric effect*},
-  award_name={Nobel Prize}
+  title={Ultrafast High-Flux Single-Photon LiDAR Simulator via Neural Mapping},
+  author={Zhang, Weijian and Weerasooriya, Hashan K. and Chan, Stanley H.},
+  booktitle={IEEE International Conference on Image Processing (ICIP)},
+  pages={2772--2777},
+  year={2025},
+  abstract={Efficient simulation of photon registrations in single-photon LiDAR is essential for generating the large-scale training data that learning-based reconstruction demands, but physically faithful sequential simulators are far too slow. We learn a neural mapping from scene and illumination parameters directly to the distorted photon-registration statistics induced by dead time, yielding an ultrafast simulator that remains accurate in the high-flux regime.},
+  arxiv={2505.23992},
+  html={https://arxiv.org/abs/2505.23992},
+  pdf={https://arxiv.org/pdf/2505.23992},
+  selected={true}
 }
 
-@book{przibram1967letters,
+@article{weerasooriya2025joint,
+  abbr={Preprint},
   bibtex_show={true},
-  title={Letters on wave mechanics},
-  author={Einstein, Albert and Schrödinger, Erwin and Planck, Max and Lorentz, Hendrik Antoon and Przibram, Karl},
-  year={1967},
-  publisher={Vision},
-  preview={wave-mechanics.gif},
-  abbr={Vision}
+  title={Joint Depth and Reflectivity Estimation using Single-Photon LiDAR},
+  author={Weerasooriya, Hashan K. and Chennuri, Prateek and Zhang, Weijian and Gyongy, Istvan and Chan, Stanley H.},
+  journal={arXiv preprint arXiv:2505.13250},
+  year={2025},
+  arxiv={2505.13250},
+  html={https://arxiv.org/abs/2505.13250},
+  pdf={https://arxiv.org/pdf/2505.13250}
+}
+
+@inproceedings{yau2024analysis,
+  abbr={MMSP},
+  bibtex_show={true},
+  title={Analysis and Improvement of Rank-Ordered Mean Algorithm in Single-Photon LiDAR},
+  author={Yau, William C. and Zhang, Weijian and Weerasooriya, Hashan K. and Chan, Stanley H.},
+  booktitle={IEEE International Workshop on Multimedia Signal Processing (MMSP)},
+  year={2024},
+  arxiv={2407.20399},
+  html={https://arxiv.org/abs/2407.20399},
+  pdf={https://arxiv.org/pdf/2407.20399}
+}
+
+@inproceedings{zhang2024parametric,
+  abbr={MMSP},
+  bibtex_show={true},
+  title={Parametric Modeling and Estimation of Photon Registrations for 3D Imaging},
+  author={Zhang, Weijian and Weerasooriya, Hashan K. and Chennuri, Prateek and Chan, Stanley H.},
+  booktitle={IEEE International Workshop on Multimedia Signal Processing (MMSP)},
+  year={2024},
+  abstract={In single-photon LiDAR systems, histogram distortion due to hardware dead time fundamentally limits the precision of depth estimation. We derive a parametric forward model of the photon-registration process under dead time and develop estimators that invert it, recovering depth accurately in flux regimes where conventional histogram-based methods break down.},
+  arxiv={2407.02712},
+  html={https://arxiv.org/abs/2407.02712},
+  pdf={https://arxiv.org/pdf/2407.02712},
+  selected={true}
+}
+
+@inproceedings{chan2024resolution,
+  abbr={CVPR},
+  bibtex_show={true},
+  title={Resolution Limit of Single-Photon LiDAR},
+  author={Chan, Stanley H. and Weerasooriya, Hashan K. and Zhang, Weijian and Abshire, Pamela and Gyongy, Istvan and Henderson, Robert K.},
+  booktitle={IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year={2024},
+  arxiv={2403.17719},
+  html={https://arxiv.org/abs/2403.17719},
+  pdf={https://arxiv.org/pdf/2403.17719}
+}
+
+@article{kong2019simple,
+  abbr={J. Phys. D},
+  bibtex_show={true},
+  title={Simple alcohol solvent treatment enables efficient non-fullerene organic solar cells},
+  author={Kong, Ting and Wang, Hao and Zhang, Weijian and Fan, Ping and Yu, Junsheng},
+  journal={Journal of Physics D: Applied Physics},
+  volume={52},
+  number={19},
+  pages={195104},
+  year={2019},
+  publisher={IOP Publishing},
+  doi={10.1088/1361-6463/ab0568},
+  html={https://doi.org/10.1088/1361-6463/ab0568}
 }

@@ -1,0 +1,6 @@
+# Optional captions for photos in assets/img/gallery/
+# The key is the filename without its extension.
+#
+# boilermaker-2025:
+#   alt: Crossing the finish line at the Purdue Boilermaker Half Marathon
+#   caption: Boilermaker Half Marathon, 2025

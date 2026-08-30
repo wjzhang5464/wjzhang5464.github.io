@@ -1,0 +1,356 @@
+/*******************************************************************************
+ * Custom overrides for wjzhang5464.github.io
+ * Kept in a single file so upstream al-folio updates stay easy to merge.
+ * Imported last in assets/css/main.scss.
+ ******************************************************************************/
+
+/* ---------------------------------------------------------------------------
+ * 1. Accent colour
+ *    A deep bronze-gold in light mode and a warm gold in dark mode: a nod to
+ *    Purdue without the low-contrast problems of the literal brand gold.
+ *    Change these two values to re-skin the whole site.
+ * ------------------------------------------------------------------------ */
+
+$accent-light: #8c6318; // ~5.6:1 on white
+$accent-dark: #dfb457; // ~9.0:1 on #1c1c1d
+
+:root {
+  --global-theme-color: #{$accent-light};
+  --global-hover-color: #{$accent-light};
+  --global-highlight-color: #{$accent-light};
+  --global-divider-color: rgba(0, 0, 0, 0.08);
+  --site-serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --site-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --site-measure: 70ch;
+}
+
+html[data-theme="dark"] {
+  --global-theme-color: #{$accent-dark};
+  --global-hover-color: #{$accent-dark};
+  --global-highlight-color: #{$accent-dark};
+  --global-divider-color: rgba(255, 255, 255, 0.1);
+  --global-card-bg-color: #232629;
+}
+
+/* ---------------------------------------------------------------------------
+ * 2. Typography
+ * ------------------------------------------------------------------------ */
+
+body {
+  font-family: var(--site-sans);
+  font-size: 1rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.post-title,
+.category,
+.card-title {
+  font-family: var(--site-sans);
+  font-weight: 650;
+  letter-spacing: -0.018em;
+  line-height: 1.25;
+}
+
+/* Long-form prose reads better with a serif and a bounded measure. */
+.post-content > p,
+.post-content > ul,
+.post-content > ol,
+.post-content > blockquote,
+.profile + p,
+.post-description {
+  font-family: var(--site-serif);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+
+.post-content > p,
+.post-content > ul,
+.post-content > ol {
+  max-width: var(--site-measure);
+}
+
+.post-content h2 {
+  margin-top: 2.25rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--global-divider-color);
+}
+
+.post-content h3 {
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Links: underline on hover only, with a offset that doesn't clip descenders. */
+a {
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px;
+}
+
+.post-content a {
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--global-theme-color) 35%, transparent);
+
+  &:hover {
+    text-decoration-color: var(--global-theme-color);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * 3. Header / navigation
+ * ------------------------------------------------------------------------ */
+
+.navbar {
+  backdrop-filter: saturate(160%) blur(12px);
+}
+
+.navbar .nav-item .nav-link {
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.005em;
+}
+
+.navbar-brand.title {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* ---------------------------------------------------------------------------
+ * 4. About page / profile
+ * ------------------------------------------------------------------------ */
+
+.profile img {
+  border-radius: 10px;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.06),
+    0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+html[data-theme="dark"] .profile img {
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.4),
+    0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+.post-header .post-title,
+.page-title {
+  margin-bottom: 0.35rem;
+}
+
+/* A quiet callout for the "looking for an internship" line. */
+.callout {
+  border-left: 3px solid var(--global-theme-color);
+  background: color-mix(in srgb, var(--global-theme-color) 8%, transparent);
+  padding: 0.85rem 1.1rem;
+  border-radius: 0 6px 6px 0;
+  margin: 1.5rem 0;
+  font-family: var(--site-sans);
+  font-size: 0.95rem;
+  max-width: var(--site-measure);
+}
+
+.callout p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---------------------------------------------------------------------------
+ * 5. Publications
+ * ------------------------------------------------------------------------ */
+
+.publications {
+  margin-top: 1rem;
+}
+
+.publications h2.bibliography {
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: none;
+  color: var(--global-text-color-light);
+  border-bottom: 1px solid var(--global-divider-color);
+  padding-bottom: 0.4rem;
+  margin: 2.25rem 0 0.5rem;
+  text-align: left;
+
+  span {
+    display: inline;
+  }
+}
+
+.publications ol.bibliography li {
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--global-divider-color);
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  .title {
+    font-family: var(--site-sans);
+    font-weight: 620;
+    font-size: 1.05rem;
+    line-height: 1.35;
+  }
+
+  .author {
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+
+  .periodical {
+    font-size: 0.9rem;
+  }
+}
+
+/* Venue badge */
+.publications ol.bibliography li .abbr abbr a,
+.publications ol.bibliography li .abbr abbr {
+  border-radius: 4px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 0.15rem 0.45rem;
+}
+
+/* Link buttons under each entry */
+.publications ol.bibliography li .links a.btn {
+  border-radius: 5px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.12rem 0.5rem;
+  margin-right: 0.25rem;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+/* ---------------------------------------------------------------------------
+ * 6. Cards (projects)
+ * ------------------------------------------------------------------------ */
+
+.card {
+  border: 1px solid var(--global-divider-color);
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: var(--global-card-bg-color);
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.card.hoverable:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--global-theme-color) 45%, transparent);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.1);
+}
+
+.card .card-title {
+  font-size: 1.05rem;
+  font-weight: 630;
+  margin-bottom: 0.4rem;
+}
+
+.card .card-text {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--global-text-color-light);
+}
+
+h2.category {
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--global-text-color-light);
+  border-bottom: 1px solid var(--global-divider-color);
+  padding-bottom: 0.4rem;
+  margin: 2.5rem 0 1.25rem;
+  text-align: left;
+}
+
+/* ---------------------------------------------------------------------------
+ * 7. News
+ * ------------------------------------------------------------------------ */
+
+/* Bootstrap's .table hard-codes a dark text colour, which al-folio never
+ * overrides -- bare text nodes inside <td>/<th> stay near-black in dark mode.
+ * Fix it here rather than patching the upstream include. */
+.table,
+.news table,
+.news table th,
+.news table td {
+  color: var(--global-text-color);
+}
+
+.news table th[scope="row"] {
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+  font-size: 0.85rem;
+  color: var(--global-text-color-light);
+  padding: 0.6rem 1rem 0.55rem 0;
+  vertical-align: top;
+  border-bottom: 1px solid var(--global-divider-color);
+}
+
+.news table td {
+  padding: 0.55rem 0 0.55rem 0;
+  vertical-align: top;
+  line-height: 1.55;
+  border-bottom: 1px solid var(--global-divider-color);
+}
+
+.news table tr:last-child th,
+.news table tr:last-child td {
+  border-bottom: none;
+}
+
+/* ---------------------------------------------------------------------------
+ * 8. Gallery
+ * ------------------------------------------------------------------------ */
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.gallery-item {
+  margin: 0;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+.gallery-item figcaption {
+  font-size: 0.82rem;
+  color: var(--global-text-color-light);
+  margin-top: 0.4rem;
+  line-height: 1.4;
+}
+
+/* ---------------------------------------------------------------------------
+ * 9. Footer
+ * ------------------------------------------------------------------------ */
+
+footer.fixed-bottom,
+footer.sticky-bottom {
+  font-size: 0.82rem;
+}

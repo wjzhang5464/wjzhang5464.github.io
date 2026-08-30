@@ -1,14 +1,8 @@
 github_users:
-  - torvalds
-  - alshedivat
+  - wjzhang5464
 
 repo_description_lines_max: 2
 
 github_repos:
-  - alshedivat/al-folio
-  - jekyll/jekyll
-  - twbs/bootstrap
-  - jquery/jquery
-  - FortAwesome/Font-Awesome
-  - mathjax/MathJax
-  - jpswalsh/academicons
+  - wjzhang5464/wjzhang5464.github.io
+  - wjzhang5464/ece209as_project
