@@ -36,37 +36,21 @@ and pushes the result to the `gh-pages` branch. GitHub Pages serves `gh-pages`.
 
 ---
 
-## 3. IMMEDIATE TASK
+## 3. Current state
 
-The working tree is clean and `main` is **4 commits ahead of `origin/main`**,
-unpushed. Weijian has reviewed the design direction and approved it. Your job:
+`main` is pushed and the site is live and correct. The five design/content
+commits (§3.1) plus three fixes made while deploying them are all on
+`origin/main`, the Deploy workflow is green, and GitHub Pages is publishing.
 
-1. **Pull, verify, and push these commits to `main`.**
-2. **Watch the deploy workflow** and confirm it goes green.
-3. **Check the live site** once it deploys.
+Verified live on 2026-08-31: homepage (quick links, internship callout, news,
+4 selected publications), author's own name `<em>`-highlighted in all 8
+publication entries, `/publications/` `/research/` `/news/` `/gallery/`
+`/repositories/` all 200, venue badges rendering, dark-mode news-table
+override present in the deployed `main.css` (it survives purgecss).
 
-```bash
-git pull --rebase origin main     # picks up any citation-bot commits
-bundle install                    # see §6 if this fails
-bundle exec jekyll build          # the real check — must succeed
-git push origin main
-gh run watch                      # or: gh run list --limit 1
-```
+`/cv/` is deliberately **not** deployed. See §7.1.
 
-If `jekyll build` fails, **fix the failure before pushing** — do not push a
-broken build. The most likely causes are a Liquid error in
-`_layouts/about.liquid` (customised, see §5) or a `preview={...}` field in
-`_bibliography/papers.bib` pointing at an image file that does not exist.
-
-After the deploy succeeds, verify on the live site:
-
-- [ ] Homepage: quick-links row, internship callout, news, selected publications
-- [ ] Author's own name is **highlighted** in every publication entry
-- [ ] `/publications/`, `/research/`, `/news/`, `/cv/`, `/gallery/` all load
-- [ ] Toggle dark mode — check the **news table** especially (see §6)
-- [ ] Nav reads: about / publications / research / news / cv / gallery
-
-### What those 4 commits contain
+### 3.1 What shipped
 
 | Commit | Summary |
 |---|---|
@@ -74,9 +58,53 @@ After the deploy succeeds, verify on the live site:
 | `0121a8f` | Layout A homepage structure; slate blue accent; `projects` → `research` |
 | `cee20c6` | Swiss editorial restyle |
 | `05d530c` | **Reverted** `cee20c6` back to the modern academic style (this is the style Weijian chose) |
+| `159db4b` | This handoff guide |
+| `34ffb36` | Stopped excluding `_pages/publications.md` and `_pages/repositories.md`; dropped demo `external_sources` |
+| `aaef649` | Added `.nojekyll`; kept `CLAUDE.md`/`requirements.txt` out of `_site` |
 
 `cee20c6` and `05d530c` cancel out stylistically. Leave both in history; do not
 try to squash them.
+
+### 3.2 Two deployment bugs that were fixed — do not reintroduce
+
+Both predated the design work and both were silent: the Deploy workflow went
+green while the live site was wrong.
+
+**`_config.yml` `exclude:` shipped from upstream al-folio excluding real
+pages.** It listed `_pages/publications.md`, `_pages/repositories.md`,
+`_pages/blog.md`, `_pages/projects.md`, `_pages/teaching.md`,
+`_pages/profiles.md`, `_pages/dropdown.md` and `_pages/cv.md`. So
+`/publications/` and `/repositories/` were never generated and 404'd on the
+live site, while the nav linked to them. Publications and repositories are now
+un-excluded. If you add a page and it 404s despite building fine, **check this
+list first.**
+
+**No `.nojekyll` in the published output.** `Deploy site` pushed a correct
+`_site` to `gh-pages`, but GitHub's own `pages build and deployment` run then
+tried to build that already-built site with Jekyll and failed every time, so
+Pages kept serving the November 2025 build. Nothing in the `Deploy site` logs
+showed this — it is a *separate* workflow run, on branch `gh-pages`.
+
+**When checking a deploy, check both workflows:**
+
+```bash
+gh run list --limit 10
+```
+
+`Deploy site` (on `main`) green is not sufficient. `pages build and deployment`
+(on `gh-pages`) must also be green, or nothing you pushed is actually live.
+Jekyll skips dotfiles, so `.nojekyll` only survives because it is named in
+`include:` in `_config.yml`. Do not remove it from that list.
+
+### 3.3 Routine deploy check
+
+```bash
+git pull --rebase origin main     # picks up any citation-bot commits
+bundle install                    # see §6 if this fails
+bundle exec jekyll build          # the real check — must succeed
+git push origin main
+gh run list --limit 10            # both workflows, see §3.2
+```
 
 ---
 
@@ -165,10 +193,18 @@ session could not delete. It is inert. `rm -rf .git/_stale` when convenient.
 
 Blocked on Weijian providing files. Do not invent content for any of these.
 
-1. **CV** — `_data/cv.yml` is still Albert Einstein's, and `_pages/cv.md` points
-   at the placeholder `assets/pdf/example_pdf.pdf`. When he supplies his CV PDF:
-   put it in `assets/pdf/`, update `cv_pdf:` in `_pages/cv.md`, and transcribe
-   it into `_data/cv.yml`.
+1. **CV — currently withheld from the live site.** `_data/cv.yml` is still
+   Albert Einstein's ("Full Name: Albert Einstein", PhD Zurich 1905) and
+   `_pages/cv.md` still points at the placeholder
+   `assets/pdf/example_pdf.pdf`. `_pages/cv.md` is therefore left in the
+   `_config.yml` `exclude:` list on purpose, so `/cv/` does not exist and
+   `cv` is absent from the nav. Publishing placeholder content on a site being
+   used for an internship search is worse than a missing page.
+
+   When he supplies his CV PDF: put it in `assets/pdf/`, update `cv_pdf:` in
+   `_pages/cv.md`, transcribe it into `_data/cv.yml`, **and remove
+   `_pages/cv.md` from `exclude:` in `_config.yml`** — the last step is easy to
+   miss and the page will silently stay a 404 without it.
 
 2. **Publication teaser figures** — the highest-value item remaining. The
    selected-publications list on the homepage has no images, and in
@@ -180,9 +216,15 @@ Blocked on Weijian providing files. Do not invent content for any of these.
 3. **Gallery photos** — `assets/img/gallery/` contains only `.gitkeep`. The page
    renders a "coming soon" note until images are added.
 
-4. **Thin pages** — `/repositories/` lists only two public repos and `/blog/`
-   has no posts. Both were kept at Weijian's request. If they still look empty
-   later, raise removing them from the nav rather than leaving them thin.
+4. **Thin pages** — `/repositories/` lists only two public repos. It was kept
+   at Weijian's request and is now actually live (it used to 404, see §3.2).
+
+   `/blog/` is **not** built: `_pages/blog.md` is still in `exclude:`, and
+   `_posts/` is empty, so there is no blog and no nav entry. The two demo posts
+   that used to appear under `/blog/` came from `external_sources` in
+   `_config.yml` pulling al-folio's own Medium feed and a Google AI blog post;
+   those feeds were removed. Worth asking Weijian whether he wants a blog at
+   all — an empty one in the nav is worse than none.
 
 5. **Unverified facts** in content, worth confirming with him:
    - News dates for the CVPR 2024, MMSP 2024, and ICASSP 2026 items are
