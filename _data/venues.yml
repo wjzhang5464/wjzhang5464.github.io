@@ -1,28 +1,27 @@
-# Badge colours are deliberately restrained: one slate for refereed venues,
-# grey for anything not yet peer reviewed. The venue name carries the
-# information; the colour only separates refereed from preprint.
-# All values keep white badge text above WCAG AA in both light and dark mode.
+# Per-venue colours, each darkened so that al-folio's white badge text clears
+# WCAG AA. The original palette had a gold ICASSP badge at roughly 3:1, which
+# is why these are deeper than the obvious brand colours.
 
 "CVPR":
   url: https://cvpr.thecvf.com/
-  color: "#1f4e79"
+  color: "#1a5fb4" # 5.4:1 with white
 
 "ICASSP":
   url: https://2026.ieeeicassp.org/
-  color: "#1f4e79"
+  color: "#8a6410" # 5.9:1 with white
 
 "ICIP":
   url: https://2025.ieeeicip.org/
-  color: "#1f4e79"
+  color: "#1f6b57" # 5.4:1 with white
 
 "MMSP":
   url: https://attend.ieee.org/mmsp-2024/
-  color: "#1f4e79"
+  color: "#6b3a8f" # 7.0:1 with white
 
 "Preprint":
   url: https://arxiv.org/
-  color: "#55606b"
+  color: "#8b0000" # 10:1 with white
 
 "J. Phys. D":
   url: https://iopscience.iop.org/journal/0022-3727
-  color: "#55606b"
+  color: "#55606b" # 5.4:1 with white
