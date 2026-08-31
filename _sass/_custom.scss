@@ -1,35 +1,54 @@
 /*******************************************************************************
  * Custom overrides for wjzhang5464.github.io
- * Kept in a single file so upstream al-folio updates stay easy to merge.
- * Imported last in assets/css/main.scss.
+ *
+ * Style: Swiss editorial -- all sans, high typographic contrast, heavy rules,
+ * generous whitespace, colour used sparingly. Everything lives in this one
+ * file so upstream al-folio updates stay easy to merge. Imported last from
+ * assets/css/main.scss.
  ******************************************************************************/
 
 /* ---------------------------------------------------------------------------
- * 1. Accent colour
- *    Slate blue: deep in light mode, lifted in dark. Both clear AA for body
- *    links, and it stays out of the way of warm-toned photos and figures.
- *    Change these two values to re-skin the whole site.
+ * 1. Tokens
+ *    Slate blue: deep in light mode, lifted in dark. Both clear WCAG AA for
+ *    body links (8.7:1 and 8.0:1). Change these two to re-skin the site.
  * ------------------------------------------------------------------------ */
 
-$accent-light: #1f4e79; // 8.7:1 on white
-$accent-dark: #79b8e8; // 8.0:1 on #1c1c1d
+$accent-light: #1f4e79;
+$accent-dark: #79b8e8;
 
 :root {
   --global-theme-color: #{$accent-light};
   --global-hover-color: #{$accent-light};
   --global-highlight-color: #{$accent-light};
-  --global-divider-color: rgba(0, 0, 0, 0.08);
-  --site-serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --global-text-color: #0a0a0a;
+  --global-text-color-light: #8a8a8a;
+  --global-divider-color: rgba(0, 0, 0, 0.13);
+
   --site-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --site-measure: 70ch;
+  --site-measure: 68ch;
+  --rule-heavy: 2px solid var(--global-text-color);
 }
 
 html[data-theme="dark"] {
   --global-theme-color: #{$accent-dark};
   --global-hover-color: #{$accent-dark};
   --global-highlight-color: #{$accent-dark};
-  --global-divider-color: rgba(255, 255, 255, 0.1);
+  --global-text-color: #f0f0f0;
+  --global-text-color-light: #8d8d8d;
+  --global-divider-color: rgba(255, 255, 255, 0.15);
   --global-card-bg-color: #232629;
+}
+
+/* Small utility: the uppercase micro-label used for nav, section heads,
+ * dates and publication metadata. Kept in one place so the treatment stays
+ * consistent -- this restraint is what makes the style hold together. */
+@mixin micro-label($size: 0.74rem, $weight: 600) {
+  font-family: var(--site-sans);
+  font-size: $size;
+  font-weight: $weight;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  line-height: 1.3;
 }
 
 /* ---------------------------------------------------------------------------
@@ -38,8 +57,8 @@ html[data-theme="dark"] {
 
 body {
   font-family: var(--site-sans);
-  font-size: 1rem;
-  line-height: 1.65;
+  font-size: 15.5px;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -51,45 +70,59 @@ h4,
 h5,
 h6,
 .post-title,
-.category,
 .card-title {
   font-family: var(--site-sans);
-  font-weight: 650;
-  letter-spacing: -0.018em;
-  line-height: 1.25;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
 }
 
-/* Long-form prose reads better with a serif and a bounded measure. */
+/* The name at the top of the about page: the one piece of real scale. */
+.post-header .post-title {
+  font-size: 3.2rem;
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 1;
+  margin-bottom: 0.55rem;
+}
+
+.post-header .desc,
+.post-description {
+  @include micro-label(0.8rem, 600);
+  color: var(--global-text-color-light);
+  margin-bottom: 1.5rem;
+}
+
+/* Lede and body prose. The measure is deliberately generous -- a narrow
+ * column looks striking in a mockup and reads badly in practice. */
 .post-content > p,
 .post-content > ul,
 .post-content > ol,
-.post-content > blockquote,
-.profile + p,
-.post-description {
-  font-family: var(--site-serif);
-  font-size: 1.0625rem;
-  line-height: 1.75;
-}
-
-.post-content > p,
-.post-content > ul,
-.post-content > ol {
+.post-content > blockquote {
   max-width: var(--site-measure);
 }
 
+.post-content > p:first-of-type {
+  font-size: 1.24rem;
+  line-height: 1.5;
+  letter-spacing: -0.015em;
+  max-width: 52ch;
+}
+
 .post-content h2 {
-  margin-top: 2.25rem;
-  margin-bottom: 0.75rem;
+  font-size: 1.35rem;
+  margin-top: 2.4rem;
+  margin-bottom: 0.7rem;
   padding-bottom: 0.3rem;
   border-bottom: 1px solid var(--global-divider-color);
 }
 
 .post-content h3 {
-  margin-top: 1.75rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  margin-top: 1.8rem;
+  margin-bottom: 0.45rem;
 }
 
-/* Links: underline on hover only, with a offset that doesn't clip descenders. */
 a {
   text-underline-offset: 0.18em;
   text-decoration-thickness: 1px;
@@ -105,54 +138,103 @@ a {
 }
 
 /* ---------------------------------------------------------------------------
- * 3. Header / navigation
+ * 3. Navigation -- the heavy rule under the masthead sets the whole tone
  * ------------------------------------------------------------------------ */
 
 .navbar {
   backdrop-filter: saturate(160%) blur(12px);
-}
-
-.navbar .nav-item .nav-link {
-  font-size: 0.95rem;
-  font-weight: 500;
-  letter-spacing: 0.005em;
+  border-bottom: var(--rule-heavy);
 }
 
 .navbar-brand.title {
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  @include micro-label(0.95rem, 800);
+  letter-spacing: 0.01em;
+  color: var(--global-text-color);
+}
+
+.navbar .nav-item .nav-link {
+  @include micro-label(0.78rem, 600);
+  color: var(--global-text-color);
+
+  &:hover {
+    color: var(--global-theme-color);
+  }
 }
 
 /* ---------------------------------------------------------------------------
- * 4. About page / profile
+ * 4. About page: profile, quick links, callout
  * ------------------------------------------------------------------------ */
 
 .profile img {
-  border-radius: 10px;
-  box-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.06),
-    0 8px 24px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
 }
 
-html[data-theme="dark"] .profile img {
-  box-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.4),
-    0 8px 24px rgba(0, 0, 0, 0.5);
-}
-
-.post-header .post-title,
-.page-title {
-  margin-bottom: 0.35rem;
-}
-
-/* A quiet callout for the "looking for an internship" line. */
-.callout {
-  border-left: 3px solid var(--global-theme-color);
-  background: color-mix(in srgb, var(--global-theme-color) 8%, transparent);
-  padding: 0.85rem 1.1rem;
-  border-radius: 0 6px 6px 0;
-  margin: 1.5rem 0;
+.profile .more-info {
+  @include micro-label(0.72rem, 500);
+  letter-spacing: 0.07em;
+  line-height: 1.75;
+  color: var(--global-text-color-light);
+  margin-top: 0.6rem;
   font-family: var(--site-sans);
+
+  /* al-folio emits each line as its own <p>; without this they run together. */
+  p {
+    display: block;
+    margin: 0;
+    color: inherit;
+  }
+}
+
+/* Quick links: CV / Scholar / GitHub / Email */
+.quick-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 1.4rem 0 0.25rem;
+}
+
+.quick-links .ql {
+  @include micro-label(0.76rem, 600);
+  display: inline-block;
+  padding: 0.5rem 0.85rem;
+  border: 1px solid var(--global-text-color);
+  border-radius: 2px;
+  color: var(--global-text-color);
+  text-decoration: none;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.quick-links .ql:hover {
+  background-color: var(--global-text-color);
+  color: var(--global-bg-color);
+  text-decoration: none;
+}
+
+.quick-links .ql-primary {
+  background-color: var(--global-theme-color);
+  border-color: var(--global-theme-color);
+  color: #fff;
+}
+
+html[data-theme="dark"] .quick-links .ql-primary {
+  color: #0a0a0a;
+}
+
+.quick-links .ql-primary:hover {
+  background-color: transparent;
+  color: var(--global-theme-color);
+  border-color: var(--global-theme-color);
+}
+
+/* Hairline-bounded callout rather than a tinted box. */
+.callout {
+  border-top: 1px solid var(--global-divider-color);
+  border-bottom: 1px solid var(--global-divider-color);
+  padding: 0.95rem 0;
+  margin: 1.7rem 0;
   font-size: 0.95rem;
   max-width: var(--site-measure);
 }
@@ -162,203 +244,8 @@ html[data-theme="dark"] .profile img {
 }
 
 /* ---------------------------------------------------------------------------
- * 5. Publications
- * ------------------------------------------------------------------------ */
-
-.publications {
-  margin-top: 1rem;
-}
-
-.publications h2.bibliography {
-  font-size: 1.1rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: none;
-  color: var(--global-text-color-light);
-  border-bottom: 1px solid var(--global-divider-color);
-  padding-bottom: 0.4rem;
-  margin: 2.25rem 0 0.5rem;
-  text-align: left;
-
-  span {
-    display: inline;
-  }
-}
-
-.publications ol.bibliography li {
-  padding: 1.1rem 0;
-  border-bottom: 1px solid var(--global-divider-color);
-
-  &:last-child {
-    border-bottom: none;
-  }
-
-  .title {
-    font-family: var(--site-sans);
-    font-weight: 620;
-    font-size: 1.05rem;
-    line-height: 1.35;
-  }
-
-  .author {
-    font-size: 0.92rem;
-    line-height: 1.5;
-  }
-
-  .periodical {
-    font-size: 0.9rem;
-  }
-}
-
-/* Venue badge */
-.publications ol.bibliography li .abbr abbr a,
-.publications ol.bibliography li .abbr abbr {
-  border-radius: 4px;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  padding: 0.15rem 0.45rem;
-}
-
-/* Link buttons under each entry */
-.publications ol.bibliography li .links a.btn {
-  border-radius: 5px;
-  font-size: 0.75rem;
-  font-weight: 500;
-  padding: 0.12rem 0.5rem;
-  margin-right: 0.25rem;
-  transition:
-    background-color 0.15s ease,
-    color 0.15s ease;
-}
-
-/* ---------------------------------------------------------------------------
- * 6. Cards (projects)
- * ------------------------------------------------------------------------ */
-
-.card {
-  border: 1px solid var(--global-divider-color);
-  border-radius: 10px;
-  overflow: hidden;
-  background-color: var(--global-card-bg-color);
-  transition:
-    transform 0.18s ease,
-    box-shadow 0.18s ease,
-    border-color 0.18s ease;
-}
-
-.card.hoverable:hover {
-  transform: translateY(-3px);
-  border-color: color-mix(in srgb, var(--global-theme-color) 45%, transparent);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.1);
-}
-
-.card .card-title {
-  font-size: 1.05rem;
-  font-weight: 630;
-  margin-bottom: 0.4rem;
-}
-
-.card .card-text {
-  font-size: 0.9rem;
-  line-height: 1.55;
-  color: var(--global-text-color-light);
-}
-
-h2.category {
-  font-size: 1.05rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--global-text-color-light);
-  border-bottom: 1px solid var(--global-divider-color);
-  padding-bottom: 0.4rem;
-  margin: 2.5rem 0 1.25rem;
-  text-align: left;
-}
-
-/* ---------------------------------------------------------------------------
- * 7. News
- * ------------------------------------------------------------------------ */
-
-/* Bootstrap's .table hard-codes a dark text colour, which al-folio never
- * overrides -- bare text nodes inside <td>/<th> stay near-black in dark mode.
- * Fix it here rather than patching the upstream include. */
-.table,
-.news table,
-.news table th,
-.news table td {
-  color: var(--global-text-color);
-}
-
-.news table th[scope="row"] {
-  white-space: nowrap;
-  font-variant-numeric: tabular-nums;
-  font-weight: 500;
-  font-size: 0.85rem;
-  color: var(--global-text-color-light);
-  padding: 0.6rem 1rem 0.55rem 0;
-  vertical-align: top;
-  border-bottom: 1px solid var(--global-divider-color);
-}
-
-.news table td {
-  padding: 0.55rem 0 0.55rem 0;
-  vertical-align: top;
-  line-height: 1.55;
-  border-bottom: 1px solid var(--global-divider-color);
-}
-
-.news table tr:last-child th,
-.news table tr:last-child td {
-  border-bottom: none;
-}
-
-/* ---------------------------------------------------------------------------
- * 8. Gallery
- * ------------------------------------------------------------------------ */
-
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 1rem;
-  margin-top: 1.5rem;
-}
-
-.gallery-item {
-  margin: 0;
-}
-
-.gallery-item img {
-  width: 100%;
-  height: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  border-radius: 8px;
-  display: block;
-  transition: transform 0.2s ease;
-}
-
-.gallery-item figcaption {
-  font-size: 0.82rem;
-  color: var(--global-text-color-light);
-  margin-top: 0.4rem;
-  line-height: 1.4;
-}
-
-/* ---------------------------------------------------------------------------
- * 9. Footer
- * ------------------------------------------------------------------------ */
-
-footer.fixed-bottom,
-footer.sticky-bottom {
-  font-size: 0.82rem;
-}
-
-
-/* ---------------------------------------------------------------------------
- * 10. Homepage section headers ("News    all news ->")
- *     Markup comes from the customised _layouts/about.liquid.
+ * 5. Section headers ("NEWS            ALL NEWS ->")
+ *    Markup comes from the customised _layouts/about.liquid.
  * ------------------------------------------------------------------------ */
 
 .sec-head {
@@ -366,18 +253,18 @@ footer.sticky-bottom {
   align-items: baseline;
   justify-content: space-between;
   gap: 1rem;
-  border-bottom: 1px solid var(--global-divider-color);
-  padding-bottom: 0.4rem;
-  margin: 2.6rem 0 1rem;
+  border-bottom: var(--rule-heavy);
+  padding-bottom: 0.42rem;
+  margin: 3.2rem 0 0.5rem;
 }
 
 .sec-head h2 {
-  font-size: 1.05rem;
-  font-weight: 650;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  color: var(--global-text-color-light);
+  @include micro-label(0.78rem, 700);
+  letter-spacing: 0.15em;
+  color: var(--global-text-color);
   margin: 0;
+  border: none;
+  padding: 0;
 
   a {
     color: inherit;
@@ -389,12 +276,10 @@ footer.sticky-bottom {
 }
 
 .sec-head .sec-more {
-  font-size: 0.85rem;
+  @include micro-label(0.72rem, 600);
   white-space: nowrap;
 }
 
-/* The about page's own h2s sit inside .sec-head, so drop the generic
- * post-content h2 border that would otherwise double up. */
 .post-content .sec-head h2 {
   border-bottom: none;
   padding-bottom: 0;
@@ -402,46 +287,201 @@ footer.sticky-bottom {
 }
 
 /* ---------------------------------------------------------------------------
- * 11. Quick links row (CV / Scholar / GitHub / Email)
+ * 6. News
+ *    Bootstrap's .table hard-codes a dark text colour, which al-folio never
+ *    overrides -- bare text in <td>/<th> stays near-black in dark mode.
  * ------------------------------------------------------------------------ */
 
-.quick-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.45rem;
-  margin: 1.25rem 0 0.25rem;
+.table,
+.news table,
+.news table th,
+.news table td {
+  color: var(--global-text-color);
 }
 
-.quick-links .ql {
-  display: inline-block;
-  font-family: var(--site-sans);
-  font-size: 0.85rem;
-  font-weight: 500;
-  line-height: 1.2;
-  padding: 0.4rem 0.8rem;
-  border: 1px solid var(--global-divider-color);
-  border-radius: 6px;
+.news table th[scope="row"] {
+  @include micro-label(0.72rem, 600);
+  font-variant-numeric: tabular-nums;
+  color: var(--global-text-color-light);
+  padding: 0.85rem 1rem 0.75rem 0;
+  vertical-align: top;
+  border-bottom: 1px solid var(--global-divider-color);
+  white-space: nowrap;
+}
+
+.news table td {
+  font-size: 0.95rem;
+  padding: 0.8rem 0;
+  vertical-align: top;
+  line-height: 1.55;
+  border-bottom: 1px solid var(--global-divider-color);
+}
+
+.news table tr:last-child th,
+.news table tr:last-child td {
+  border-bottom: none;
+}
+
+/* ---------------------------------------------------------------------------
+ * 7. Publications
+ * ------------------------------------------------------------------------ */
+
+.publications {
+  margin-top: 1rem;
+}
+
+.publications h2.bibliography {
+  @include micro-label(0.78rem, 700);
+  letter-spacing: 0.15em;
   color: var(--global-text-color);
-  text-decoration: none;
+  border-top: none;
+  border-bottom: var(--rule-heavy);
+  padding: 0 0 0.42rem;
+  margin: 3rem 0 0.5rem;
+  text-align: left;
+
+  span {
+    display: inline;
+    font-size: inherit;
+  }
+}
+
+.publications ol.bibliography li {
+  padding: 1.35rem 0;
+  border-bottom: 1px solid var(--global-divider-color);
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  .title {
+    font-family: var(--site-sans);
+    font-weight: 650;
+    font-size: 1.14rem;
+    letter-spacing: -0.02em;
+    line-height: 1.28;
+  }
+
+  .author {
+    font-size: 0.87rem;
+    line-height: 1.5;
+    color: var(--global-text-color-light);
+    margin-top: 0.3rem;
+  }
+
+  .periodical {
+    @include micro-label(0.74rem, 600);
+    color: var(--global-text-color);
+    margin-top: 0.35rem;
+  }
+}
+
+/* Venue badge: squared off and monochrome-by-default. Colours still come
+ * from _data/venues.yml where set. */
+.publications ol.bibliography li .abbr abbr {
+  @include micro-label(0.68rem, 700);
+  border-radius: 2px;
+  padding: 0.2rem 0.45rem;
+
+  /* Venue colours in _data/venues.yml are dark enough for white text in
+   * both themes; pin the colour so the dark-mode default can't override it. */
+  a,
+  div {
+    color: #fff !important;
+  }
+}
+
+.publications ol.bibliography li .links a.btn {
+  @include micro-label(0.68rem, 600);
+  border-radius: 2px;
+  padding: 0.18rem 0.5rem;
+  margin-right: 0.22rem;
+  margin-top: 0.45rem;
   transition:
-    border-color 0.15s ease,
     background-color 0.15s ease,
     color 0.15s ease;
 }
 
-.quick-links .ql:hover {
-  border-color: var(--global-theme-color);
-  color: var(--global-theme-color);
-  text-decoration: none;
+/* ---------------------------------------------------------------------------
+ * 8. Cards (research page)
+ * ------------------------------------------------------------------------ */
+
+.card {
+  border: 1px solid var(--global-divider-color);
+  border-radius: 3px;
+  overflow: hidden;
+  background-color: var(--global-card-bg-color);
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease;
 }
 
-.quick-links .ql-primary {
-  background-color: var(--global-theme-color);
-  border-color: var(--global-theme-color);
-  color: var(--global-bg-color);
+.card.hoverable:hover {
+  transform: translateY(-3px);
+  border-color: var(--global-text-color);
+  box-shadow: none;
 }
 
-.quick-links .ql-primary:hover {
-  background-color: transparent;
-  color: var(--global-theme-color);
+.card .card-title {
+  font-size: 1.08rem;
+  font-weight: 680;
+  letter-spacing: -0.022em;
+  line-height: 1.25;
+  margin-bottom: 0.45rem;
+}
+
+.card .card-text {
+  font-size: 0.89rem;
+  line-height: 1.5;
+  color: var(--global-text-color-light);
+}
+
+h2.category {
+  @include micro-label(0.78rem, 700);
+  letter-spacing: 0.15em;
+  color: var(--global-text-color);
+  border-bottom: var(--rule-heavy);
+  padding-bottom: 0.42rem;
+  margin: 3rem 0 1.3rem;
+  text-align: left;
+}
+
+/* ---------------------------------------------------------------------------
+ * 9. Gallery
+ * ------------------------------------------------------------------------ */
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+  margin-top: 1.6rem;
+}
+
+.gallery-item {
+  margin: 0;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 3px;
+  display: block;
+}
+
+.gallery-item figcaption {
+  @include micro-label(0.68rem, 500);
+  color: var(--global-text-color-light);
+  margin-top: 0.45rem;
+}
+
+/* ---------------------------------------------------------------------------
+ * 10. Footer
+ * ------------------------------------------------------------------------ */
+
+footer.fixed-bottom,
+footer.sticky-bottom {
+  @include micro-label(0.68rem, 500);
+  letter-spacing: 0.06em;
 }

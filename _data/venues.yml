@@ -1,23 +1,28 @@
+# Badge colours are deliberately restrained: one slate for refereed venues,
+# grey for anything not yet peer reviewed. The venue name carries the
+# information; the colour only separates refereed from preprint.
+# All values keep white badge text above WCAG AA in both light and dark mode.
+
 "CVPR":
   url: https://cvpr.thecvf.com/
-  color: "#1a5fb4"
+  color: "#1f4e79"
 
 "ICASSP":
   url: https://2026.ieeeicassp.org/
-  color: "#b8860b"
+  color: "#1f4e79"
 
 "ICIP":
   url: https://2025.ieeeicip.org/
-  color: "#2a7f62"
+  color: "#1f4e79"
 
 "MMSP":
   url: https://attend.ieee.org/mmsp-2024/
-  color: "#7a3e9d"
+  color: "#1f4e79"
 
 "Preprint":
   url: https://arxiv.org/
-  color: "#8b0000"
+  color: "#55606b"
 
 "J. Phys. D":
   url: https://iopscience.iop.org/journal/0022-3727
-  color: "#555555"
+  color: "#55606b"
